@@ -86,6 +86,7 @@ const TEXT = {
       'While a reactor runs, fission makes iodine-135, which decays into xenon-135. Xenon soaks up neutrons better than almost anything, but the neutron flux burns it away as fast as it forms. It stays in balance.',
       'Trip the reactor and the balance breaks. The neutrons stop, so the burn-off stops, but the iodine already in the fuel keeps turning into xenon. The poison builds up and the core drifts further from being able to restart.',
       'A CANDU has little spare reactivity, because it refuels daily. Pulling the adjuster rods gives about 15 mk, which buys about 30 minutes. Miss that window and you are <strong>poisoned out</strong>: xenon peaks about 10 hours later and the reactor cannot restart for about a day and a half, however good your operators are.',
+      'That is why a CANDU is built not to trip when only the grid is in trouble. If the turbine cannot take the steam, reactor power steps back to about 60% and valves send the extra steam straight to the condenser, past the turbine. The flux keeps burning xenon off, and the unit is ready to reconnect when the grid comes back.',
       'Which leads to the real lesson. Poison-out costs money. It is not a safety problem. If the cause of the trip is real, the correct move is to stay shut down and let the clock run out.',
     ],
     quiz: [
@@ -194,6 +195,7 @@ const SOURCES_HTML = `<h2>Sources and simplifications</h2>
 <li>Plant values are for a CANDU 6 class unit. Darlington, Bruce and Pickering differ in size, layout and containment.</li>
 <li>The drawing is a schematic. Parts are moved apart and rescaled so you can see them, and only the fuel channel and feeder counts are literal.</li>
 <li>The xenon model is a point model tuned to published figures: about 30 minutes of override from 15 mk (sources give 30 to 40), a peak near 10 hours, and restart after about 36 hours. Real timing depends on power history and plant condition.</li>
+<li>A real unit is designed to ride through a grid disturbance by stepping back to about 60% and sending steam to the condenser. The drill's grid cause assumes that ride-through failed and the reactor tripped.</li>
 <li>Decay heat uses a standard textbook fit, not a CANDU-specific calculation. It sits at the low end of the published range, about 1% of full power an hour after shutdown where general references give 1.5 to 2%.</li>
 <li>Part-power temperatures in Fig. 03 are illustrative. Refuelling and liquid zone behaviour in Fig. 02 use teaching values.</li>
 <li>Drill steps, durations and alarm wording are simplified teaching inventions. Outage day numbers are illustrative.</li>

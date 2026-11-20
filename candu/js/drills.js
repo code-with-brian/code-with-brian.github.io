@@ -50,14 +50,14 @@
       after: 'Moisture in the annulus gas points at a leaking pressure tube. That is the gas gap doing its job as a leak detector.' },
     { id: 'grid', name: 'Grid disturbance', safe: true,
       lamps: [['SDS1 TRIPPED', 'red'], ['RODS AT BOTTOM', 'amber'], ['GENERATOR BREAKER OPEN', 'red'], ['GRID FREQUENCY LOW', 'amber'], ['TURBINE TRIPPED', 'amber'], ['HT PRESSURE NORMAL', 'green'], ['ANNULUS GAS DRY', 'green'], ['ION CHAMBERS NORMAL', 'green']],
-      after: 'A disturbance on the grid opened the generator breaker. The reactor itself is healthy and the grid has recovered.' },
+      after: 'A disturbance on the grid opened the generator breaker. The plant is designed to ride this out by stepping back and sending steam to the condenser, but this time the reactor tripped anyway. The reactor itself is healthy and the grid has recovered.' },
   ];
   const RUN = [
     { label: 'Clear and reset the trip', min: 6, done: 'Trip cleared. Shutdown system reset and poised.' },
     { label: 'Withdraw the shutoff rods', min: 7, done: 'Shutoff rods out of the core.', plant: { rods: 'out' } },
     { label: 'Drive the adjusters out', min: 4, done: 'Adjusters withdrawn. All the override reactivity is in.', plant: { adj: 'out' } },
     { label: 'Take the reactor critical', min: 3, done: 'Reactor critical. Neutrons are back.', power: 5 },
-    { label: 'Raise power to 60%', min: 3, done: 'Holding at 60 %FP. The flux is burning xenon again.', power: 60, plant: { steam: 'on' } },
+    { label: 'Raise power to 60%', min: 3, done: 'Holding at 60 %FP, with steam going to the condenser until the turbine is back. The flux is burning xenon again.', power: 60, plant: { steam: 'on' } },
   ];
   const profile = Sim.tripProfile(48, 60);
   const curve = profile.curve.map((c) => ({ x: c.h, y: c.mk }));
