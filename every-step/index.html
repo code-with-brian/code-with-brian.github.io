@@ -254,7 +254,7 @@ button { font: inherit; color: inherit; }
       <div>
         <h2>What this map is</h2>
         <p>A guide to where Canada's nuclear fuel cycle meets treaty and unceded land, built from regulator records, court decisions, company reports and the Nations' own statements. It describes what happened. It is not legal advice, and it doesn't take a position on what is owed.</p>
-        <p>The shaded areas come from the Government of Canada's Historic Treaties map data, published under the Open Government Licence – Canada. Its boundaries are approximate, it doesn't show unceded territory, and in places it disagrees with how Nations describe their own lands. Chalk River is one example: the federal map shades it as Williams Treaties land, while the regulator and Algonquin Nations call it unceded. The timeline shows each treaty in the year it was first signed. The lines show the stages in order, not specific shipments. Fuel bundles are made in both Port Hope and Peterborough, shown as one line through Peterborough, and Pickering, now shut down, has no incoming line. BWXT's Toronto pellet plant and closed prototype reactors such as Douglas Point and Gentilly-1 are mentioned in their neighbours' pages rather than given their own pins.</p>
+        <p>The shaded areas come from the Government of Canada's Historic Treaties map data, published under the Open Government Licence – Canada. Its boundaries are approximate, it doesn't show unceded territory, and in places it disagrees with how Nations describe their own lands. Chalk River is one example: the federal map shades it as Williams Treaties land, while the regulator and Algonquin Nations call it unceded. The timeline shows each treaty in the year it was first signed. The lines show the stages in order, not specific shipments. Fuel bundles are made in Port Hope and Peterborough; the CNSC says Peterborough's are for Pickering and Darlington. Pickering, now shut down, has no incoming line. BWXT's Toronto pellet plant and closed prototype reactors such as Douglas Point and Gentilly-1 are mentioned in their neighbours' pages rather than given their own pins.</p>
         <p>Facts are current as of November 23, 2026. If you are from one of these Nations and something here is wrong or missing, it will be corrected.</p>
       </div>
 
@@ -373,6 +373,7 @@ const SRC = {
 
   g2Cnsc: ["CNSC: Gentilly-2 Nuclear Generating Station", "https://www.cnsc-ccsn.gc.ca/eng/reactors/power-plants/gentilly-2-nuclear-generating-station/"],
   g1: ["CNSC: Gentilly-1 facility", "https://www.cnsc-ccsn.gc.ca/eng/reactors/regulating-nuclear-reactors-power-plants/decommissioning-of-nuclear-facilities/shut-down-decommissioned-reactors/gentilly-1-facility/"],
+  g1Rod: ["CNSC: Ruling on Gentilly-1 licence amendment, DEC 26-H100 (2026)", "https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD26-H100-ROD-ENG.pdf/object"],
   g2Rod: ["CNSC: Décision, Gentilly-2 (2026)", "https://api.cnsc-ccsn.gc.ca/dms/digital-medias/CMD26-H101-ROD-FRA.pdf/object"],
   w8: ["Grand Conseil de la Nation Waban-Aki: Ndakina", "https://gcnwa.com/en/?p=15924"],
   hqMain: ["Hydro-Québec: Decommissioning of Gentilly-2", "https://www.hydroquebec.com/decommissioning-gentilly-2/"],
@@ -431,11 +432,11 @@ const STOPS = [
     id: "porthope", since: 1935, sinceText: "Uranium products are first made at Port Hope", tile: "Port Hope", pin: "Port Hope", name: "Port Hope", stage: "Convert", prov: "Ontario",
     ll: [43.943554, -78.295349], zoom: 95, dx: -8,
     landShort: "Gunshot Treaty and Williams Treaties · Michi Saagiig Anishinaabeg",
-    role: "Cameco converts UO&#8323; into uranium dioxide and uranium hexafluoride. Canadian Nuclear Laboratories is also cleaning up historic low-level radioactive waste in the area through the Port Hope Area Initiative. About 2 km away, Cameco Fuel Manufacturing makes fuel pellets and bundles.",
-    land: "The CNSC says the site lies within the traditional lands and waters of the <b>Michi Saagiig Anishinaabeg</b>, under the <b>Gunshot Treaty</b> (1788), the <b>Williams Treaties</b> (1923) and the Williams Treaties Settlement Agreement (2018). Hiawatha First Nation says Cameco operates &ldquo;within our Treaty Territory.&rdquo;",
+    role: "Cameco converts UO&#8323; into uranium dioxide and uranium hexafluoride. Canadian Nuclear Laboratories is also cleaning up historic low-level radioactive waste in the area through the Port Hope Area Initiative. About 2 km away, Cameco Fuel Manufacturing makes fuel bundles.",
+    land: "The CNSC says the site lies within the traditional lands and waters of the <b>Michi Saagiig Anishinaabeg</b>, under the <b>Gunshot Treaty</b> (1787–88), the <b>Williams Treaties</b> (1923) and the Williams Treaties Settlement Agreement (2018). Hiawatha First Nation says Cameco operates &ldquo;within our Treaty Territory.&rdquo;",
     facts: [
-      ["1935", "Uranium products are first made on the Port Hope site, according to the CNSC and Cameco."],
       ["1788", "The Gunshot Treaty covers the north shore of Lake Ontario. Ontario says these lands were the subject of a &ldquo;confirmatory surrender&rdquo; in the Williams Treaties of 1923."],
+      ["1935", "Uranium products are first made on the Port Hope site, according to the CNSC and Cameco."],
       ["2018", "Canada and Ontario settle litigation the seven Williams Treaties First Nations began in 1992. The settlement includes $1.11 billion, up to 11,000 acres of new reserve land for each Nation, recognition of treaty harvesting rights, and apologies delivered at Rama on November 17."],
       ["2026", "Cameco asks for a 20-year licence. The Mississaugas of Scugog Island support it. Alderville says the Commission &ldquo;cannot find that the Honour of the Crown has been upheld.&rdquo; Hiawatha asks for formal reviews at years 5 and 15."],
     ],
@@ -448,12 +449,12 @@ const STOPS = [
     id: "peterborough", since: 1955, sinceText: "The Peterborough fuel plant starts operating, by the CNSC's record", tile: "Peterborough", pin: "Peterborough", name: "BWXT Peterborough", stage: "Fuel bundles", prov: "Ontario",
     ll: [44.295956, -78.333725], zoom: 95, dy: -6,
     landShort: "Treaty 20 and Williams Treaties · Michi Saagiig Anishinaabeg",
-    role: "BWXT Nuclear Energy Canada assembles fuel bundles here from uranium dioxide pellets made at its Toronto plant. The CNSC lists the start of operation as 1955, and the licence runs to 2030.",
+    role: "BWXT Nuclear Energy Canada assembles fuel bundles here from uranium dioxide pellets made at its Toronto plant. The CNSC says these bundles are for OPG's Pickering and Darlington stations. It lists the start of operation as 1955, and the licence runs to 2030.",
     land: "The CNSC says the plant is on <b>Treaty 20</b> Michi Saagiig territory, in the traditional territory of the Michi Saagiig and Chippewa Nations known as the Williams Treaties First Nations. Curve Lake First Nation says the site is within its homelands, covered by Treaty 20 (1818) and the <b>Williams Treaties</b> (1923).",
     facts: [
       ["1818", "Treaty 20 is signed on November 5."],
       ["2020", "At the licence renewal hearing, Curve Lake and Hiawatha First Nations present together. Curve Lake says it wasn't told about BWXT's request to make fuel pellets in Peterborough, and BWXT acknowledges it &ldquo;needed to improve its engagement process.&rdquo;"],
-      ["2026", "At the mid-term review, Curve Lake says relationship building with BWXT &ldquo;is satisfactory and is constrained by time and bandwidth.&rdquo;"],
+      ["2026", "In a written submission for the mid-term review, Curve Lake says relationship building with BWXT &ldquo;is satisfactory and is constrained by time and bandwidth.&rdquo;"],
     ],
     short: ["Still unresolved", "The Commission found the duty to consult was not engaged by the 2020 renewal. It approved pelleting in Peterborough by majority, with one member opposed, and in 2026 CNSC staff said pelleting can't begin until uranium air monitoring is in place."],
     asof: "Status as of November 23, 2026.",
@@ -534,9 +535,9 @@ const STOPS = [
     role: "A former AECL research site near Pinawa, now being decommissioned by Canadian Nuclear Laboratories. Its WR-1 reactor ran from 1965 to 1985 and is in storage with surveillance.",
     land: "The CNSC says the site is on the homeland of the Red River Métis, in <b>Treaty 1</b> and <b>Treaty 3</b> territories and the traditional territory of the Anishinaabe and Ojibway Peoples, and near Treaty 5 territory. Sagkeeng Anicinabe Nation, a Treaty 1 signatory, says its &ldquo;traditional and unsurrendered territory includes lands and waters within the boundaries of Treaties 3 and 5.&rdquo;",
     facts: [
-      ["1871", "Sagkeeng's ancestors sign Treaty 1 on August 3."],
+      ["1871", "Sagkeeng's ancestors sign Treaty 1."],
       ["2019–22", "At the 2019 licence hearing, Sagkeeng describes &ldquo;ongoing fear and avoidance of the WL site&rdquo; in the community. In 2022 its members join CNSC staff in the field to take samples together."],
-      ["2024", "The CNSC renews the decommissioning licence to the end of 2027. Entombing WR-1 in place is outside the scope of that licence."],
+      ["2024", "The CNSC renews the decommissioning licence to the end of 2027. Decommissioning WR-1 in place is outside the scope of that licence."],
       ["Aug 2026", "Sagkeeng, CNL and AECL sign a bridging agreement. Their joint release says the site was set up &ldquo;without Sagkeeng's consent or meaningful participation.&rdquo; Chief Ej Fontaine: &ldquo;This is not the finish line.&rdquo;"],
     ],
     short: ["Still unresolved", "No decision has been made on CNL's plan to decommission WR-1 in place. The review of the draft impact statement finished in August 2025, and the final statement, hearing and decision are all listed as to be confirmed."],
@@ -559,7 +560,7 @@ const STOPS = [
       ["2026", "The decommissioning licence is renewed to 2046."],
     ],
     short: ["Still unresolved", "The Commission found the 2026 renewal did not trigger the duty to consult, and it received no interventions from Indigenous Nations. That is a finding about process. It is not evidence that the Nations have no concerns."],
-    refs: ["hqMain", "g2Cnsc", "g1", "g2Rod", "w8", "hqNews", "qcW8", "ctvG2", "hqG2"],
+    refs: ["hqMain", "g2Cnsc", "g1", "g1Rod", "g2Rod", "w8", "hqNews", "qcW8", "ctvG2", "hqG2"],
     film: "Closed on the St. Lawrence, in Ndakina, the W8banaki territory.",
   },
   {
@@ -598,14 +599,14 @@ const STOPS = [
   },
 ];
 
-/* The stages in order, not specific shipments. Fuel bundles are made in both Port Hope and Peterborough; the map shows them as one leg through Peterborough. Pickering is shut down, so it has no incoming leg. Research sites have no legs. */
+/* The stages in order, not specific shipments. Fuel bundles are made in Port Hope (Cameco) and Peterborough (BWXT). The CNSC says BWXT's bundles are for Pickering and Darlington; Pickering is shut down, so it has no incoming leg. Research sites have no legs. */
 const FLOWS = [
   { from: "mines", to: "blind", bend: .12 },
   { from: "blind", to: "porthope", bend: .22 },
-  { from: "porthope", to: "peterborough", bend: .3 },
+  { from: "porthope", to: "darlington", bend: .9 },
+  { from: "porthope", to: "bruce", bend: .15 },
+  { from: "porthope", to: "lepreau", bend: -.12 },
   { from: "peterborough", to: "darlington", bend: .3 },
-  { from: "peterborough", to: "bruce", bend: .15 },
-  { from: "peterborough", to: "lepreau", bend: -.12 },
   { from: "bruce", to: "revell", kind: "planned", bend: .1 },
   { from: "pickering", to: "revell", kind: "planned", bend: .14 },
   { from: "darlington", to: "revell", kind: "planned", bend: .17 },
