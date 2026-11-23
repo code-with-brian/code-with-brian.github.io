@@ -106,6 +106,9 @@ button { font: inherit; color: inherit; }
 .stagebar { position: absolute; top: 16px; right: 16px; display: flex; gap: 6px; }
 .stagebar button { min-width: 38px; height: 38px; padding: 0 12px; background: var(--tile-off); border: 2px solid var(--bezel); border-radius: 2px; font: 700 12px/1 var(--mono); cursor: pointer; }
 .stagebar button:hover { background: #fff; }
+.stagebar .hb { display: none; }
+.hist .stagebar .hb { display: inline-block; }
+.hist #zoomIn, .hist #zoomOut { display: none; }
 .hint { position: absolute; top: 24px; left: max(24px, env(safe-area-inset-left, 0px)); margin: 0; font: 400 11px/1.3 var(--mono); color: var(--ink-soft); pointer-events: none; }
 .legend { position: absolute; bottom: 22px; right: max(16px, env(safe-area-inset-right, 0px)); padding: 8px 10px; background: rgba(237,242,238,.86); margin: 0; padding: 0; list-style: none; font: 400 11px/1.3 var(--mono); color: var(--ink-soft); pointer-events: none; display: grid; gap: 4px; }
 .legend i { display: inline-block; width: 22px; height: 0; border-top: 3px dotted var(--signal); vertical-align: middle; margin-right: 6px; }
@@ -164,6 +167,32 @@ button { font: inherit; color: inherit; }
 .terms dt { font: 700 12px/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
 .terms dd { margin: 2px 0 0; font-size: 14px; }
 
+
+/* History beats */
+.hist .mast, .hist.past .mast { opacity: 1; }
+.hist .mast h1 { font-size: clamp(52px, 6.6vw, 104px); }
+.hist .mast p:not(.ed) { display: block; max-width: 34em; margin-top: 10px; padding: 10px 14px; font-size: 16px; line-height: 1.45; color: var(--ink); background: color-mix(in srgb, var(--board) 90%, transparent); border-left: 4px solid var(--signal); }
+.hist .mast p b { font-weight: 700; }
+#map .treaty.now { fill: hsl(var(--h) 55% 52% / .42); stroke: var(--signal); stroke-width: calc(var(--k, 1) * 2.6); }
+.hist #map .treaty:not(.now):not(.future) { opacity: .55; }
+.pin.new b { background: var(--signal); transform: scale(1.3); }
+.pin.new { z-index: 2; }
+.pin.new span { display: inline; }
+.beats { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+.beats li { background: var(--board-pale); }
+.beats button { all: unset; box-sizing: border-box; width: 100%; cursor: pointer; display: grid; grid-template-columns: 6.2em minmax(0, 1fr); gap: 10px; align-items: baseline; padding: 8px 10px; }
+.beats button:hover { background: #f3f7f2; }
+.beats button:focus-visible { outline: 3px solid var(--signal); outline-offset: -3px; }
+.beats time { font: 700 12px/1.3 var(--mono); color: var(--ink-soft); }
+.beats b { font-size: 14px; line-height: 1.3; }
+.beats .done { opacity: .62; }
+.beats .cur { background: var(--bezel); color: var(--tile-off); }
+.beats .cur time { color: var(--tile-lit); }
+.beats .cur button:hover { background: transparent; }
+.beats .cur p { margin: 0; padding: 0 12px 10px; font-size: 14px; line-height: 1.5; }
+.beats .cur .refs { padding: 0 12px 12px; }
+.beats .cur .refs a { color: var(--tile-lit); }
+.stepper button[disabled] { opacity: .4; cursor: default; }
 @media (max-width: 980px) {
   .plant { display: block; height: auto; min-height: 0; }
   .stage { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; height: 46svh; min-height: 290px; border-bottom: 3px solid var(--bezel); }
@@ -177,6 +206,11 @@ button { font: inherit; color: inherit; }
   .mast h1 { font-size: clamp(22px, 6vw, 40px); }
   .routed .mast h1 { font-size: 28px; }
   .hint, .legend { display: none; }
+  .hist .mast { right: 16px; }
+  .hist .mast h1 { font-size: 30px; }
+  .hist .mast p:not(.ed) { display: block; font-size: 12.5px; line-height: 1.4; padding: 7px 10px; margin-top: 6px; }
+  .hist .stagebar { top: 76px; bottom: auto; right: 8px; }
+  .hist #allBtn { display: none; }
   .timeline { top: 8px; left: 8px; right: 8px; max-width: none; padding: 6px 8px; gap: 2px 8px; }
   .timeline output { font-size: 26px; }
   .timeline button { height: 32px; padding: 0 9px; font-size: 11px; }
@@ -203,7 +237,9 @@ button { font: inherit; color: inherit; }
 .film .mast { left: 0; right: 0; bottom: 0; padding: 30px 56px 48px; background: var(--board); border-top: 4px solid var(--bezel); }
 .film .mast .ed { display: inline-block; max-width: max-content; color: var(--tile-lit); font-size: 22px; line-height: 1.2; padding: 5px 12px; margin: 0 0 14px; }
 .film .mast h1 { font-size: 112px; }
-.film .mast p:not(.ed), .film.routed .mast p:not(.ed) { display: block; font-size: 32px; line-height: 1.24; color: var(--ink); max-width: none; margin-top: 18px; }
+.film.hist .mast h1 { font-size: 104px; }
+.film.hist .mast p:not(.ed) { background: none; border: 0; padding: 0; font-size: 30px; }
+.film .mast p:not(.ed), .film.routed .mast p:not(.ed), .film.hist .mast p:not(.ed) { display: block; font-size: 32px; line-height: 1.24; color: var(--ink); max-width: none; margin-top: 18px; }
 .film.routed .mast h1 { font-size: 78px; }
 
 @media (prefers-reduced-motion: reduce) { .mast h1 { transition: none; } }
@@ -227,6 +263,8 @@ button { font: inherit; color: inherit; }
       <div class="stagebar" role="group" aria-label="Map controls">
         <button id="zoomOut" aria-label="Zoom out">&minus;</button>
         <button id="zoomIn" aria-label="Zoom in">+</button>
+        <button class="hb" data-beatstep="-1" aria-label="Previous moment">&lsaquo; Back</button>
+        <button class="hb" data-beatstep="1" aria-label="Next moment">Next &rsaquo;</button>
         <button id="allBtn">All sites</button>
       </div>
     </div>
@@ -254,7 +292,7 @@ button { font: inherit; color: inherit; }
       <div>
         <h2>What this map is</h2>
         <p>A guide to where Canada's nuclear fuel cycle meets treaty and unceded land, built from regulator records, court decisions, company reports and the Nations' own statements. It describes what happened. It is not legal advice, and it doesn't take a position on what is owed.</p>
-        <p>The shaded areas come from the Government of Canada's Historic Treaties map data, published under the Open Government Licence – Canada. Its boundaries are approximate, it doesn't show unceded territory, and in places it disagrees with how Nations describe their own lands. Chalk River is one example: the federal map shades it as Williams Treaties land, while the regulator and Algonquin Nations call it unceded. The timeline shows each treaty in the year it was first signed. The lines show the stages in order, not specific shipments. Fuel bundles are made in Port Hope and Peterborough; the CNSC says Peterborough's are for Pickering and Darlington. Pickering, now shut down, has no incoming line. BWXT's Toronto pellet plant and closed prototype reactors such as Douglas Point and Gentilly-1 are mentioned in their neighbours' pages rather than given their own pins.</p>
+        <p>The shaded areas come from the Government of Canada's Historic Treaties map data, published under the Open Government Licence – Canada. Its boundaries are approximate, it doesn't show unceded territory, and in places it disagrees with how Nations describe their own lands. Chalk River is one example: the federal map shades it as Williams Treaties land, while the regulator and Algonquin Nations call it unceded. The timeline shows each treaty in the year it was first signed. Play history steps through twelve moments; the sources for each caption are listed under it. The lines show the stages in order, not specific shipments. Fuel bundles are made in Port Hope and Peterborough; the CNSC says Peterborough's are for Pickering and Darlington. Pickering, now shut down, has no incoming line. BWXT's Toronto pellet plant and closed prototype reactors such as Douglas Point and Gentilly-1 are mentioned in their neighbours' pages rather than given their own pins.</p>
         <p>Facts are current as of November 23, 2026. If you are from one of these Nations and something here is wrong or missing, it will be corrected.</p>
       </div>
 
@@ -619,6 +657,47 @@ const EXTRA_EVENTS = [
   [1972, "Gentilly-1, a prototype CANDU, enters service at Gentilly, Quebec"],
 ];
 
+/* "Play history": one beat per moment, each built only from facts sourced on the site pages.
+   y is the year the map rolls to; label is what the reader sees. film: false beats are skipped in the video to keep it short. */
+const HISTORY = [
+  { y: 1725, label: "1725–1779", title: "Peace and Friendship Treaties", treaties: ["Peace and Friendship Treaties"],
+    text: "The CNSC says they cover Point Lepreau. The Wolastoqey Nation calls them &ldquo;treaties of peace and alliance – not land surrender or cession.&rdquo;",
+    refs: ["lepRod", "wnnbPft"] },
+  { y: 1764, label: "1764–1862", title: "Southern Ontario treaties", treaties: ["Southern Ontario Treaties"], film: false,
+    text: "The federal map shows these as one area. Ontario dates the Gunshot Treaty, on the north shore of Lake Ontario, to 1788, and Treaty 20, around Peterborough, to 1818.",
+    refs: ["onMap"] },
+  { y: 1850, label: "1850", title: "Robinson-Huron Treaty", treaties: ["Robinson-Huron Treaty"],
+    text: "Signed in Sault Ste. Marie on September 9. The annuity rose only once, to $4 a person in 1875. The Blind River refinery is on this land today.",
+    refs: ["onMap", "rhSettle", "brr22"] },
+  { y: 1877, label: "1871–1877", title: "Treaties 1 to 7", treaties: ["Treaty 1", "Treaty 2", "Treaty 3", "Treaty 4", "Treaty 5", "Treaty 6", "Treaty 7"],
+    text: "The numbered treaties begin. Treaty 3 is signed on October 3, 1873. Grand Council Treaty #3 says the planned repository site is &ldquo;entirely within Treaty #3 Territory.&rdquo;",
+    refs: ["t3", "gct3"] },
+  { y: 1921, label: "1899–1921", title: "Treaties 8 to 11", treaties: ["Treaty 8", "Treaty 9", "Treaty 10", "Treaty 11"],
+    text: "Treaty 10 is signed at Île-à-la-Crosse on August 28, 1906. The CNSC records the uranium mines and mills as on Treaty 10 territory.",
+    refs: ["t10", "cigarRod", "keyRod"] },
+  { y: 1923, label: "1923", title: "Williams Treaties", treaties: ["Williams Treaties"],
+    text: "Signed on October 31 and November 15 by seven Anishinaabe First Nations. Ontario says lands on Lake Ontario's north shore were the subject of a &ldquo;confirmatory surrender.&rdquo;",
+    refs: ["onMap"] },
+  { y: 1945, label: "1935–1945", title: "Uranium arrives", sites: ["porthope", "chalk"],
+    text: "Uranium products are first made at Port Hope in 1935. In 1945 the ZEEP reactor goes critical at Chalk River, on land the CNSC calls unceded Algonquin territory.",
+    refs: ["phCnsc", "phCameco", "zeep", "nsdf24"] },
+  { y: 1972, label: "1955–1972", title: "The industry spreads", sites: ["peterborough", "whiteshell", "pickering"],
+    text: "Fuel bundles at Peterborough (1955), the WR-1 reactor at Whiteshell (1965), Douglas Point (1968), Pickering (1971) and Gentilly-1 (1972).",
+    refs: ["bwxt", "wl", "dp", "pickering", "g1"] },
+  { y: 1990, label: "1977–1990", title: "The fuel cycle fills in", sites: ["bruce", "mines", "blind", "lepreau", "gentilly", "darlington"],
+    text: "Bruce (1977). Key Lake, Blind River, Point Lepreau and Gentilly-2 (1983). Darlington (1990).",
+    refs: ["bpHist", "keyLake", "blindCnsc", "lepCnsc", "g2Cnsc", "darlington"] },
+  { y: 2018, label: "2018", title: "A settlement and apologies", treaties: ["Williams Treaties"], film: false,
+    text: "Canada and Ontario settle with the seven Williams Treaties First Nations for $1.11 billion and other terms, and apologize at Rama on November 17.",
+    refs: ["wtSettle", "wtApology"] },
+  { y: 2024, label: "2024", title: "A repository site", treaties: ["Treaty 3"], sites: ["revell"],
+    text: "NWMO selects a site between Wabigoon Lake Ojibway Nation and Ignace. The Nation says its yes &ldquo;does not signify approval of the project.&rdquo;",
+    refs: ["nwmoSite", "wlon"] },
+  { y: 2026, label: "2026", title: "Today", sites: ["darlington", "chalk"],
+    text: "The Williams Treaties First Nations invest $700 million in the Darlington SMR project. Kebaowek First Nation asks the Supreme Court to hear its Chalk River case. As of November 23, 2026.",
+    refs: ["wtfnInvest", "scc2026"] },
+];
+
 const OVERVIEW = {
   title: "Every step is on someone's land",
   body: [
@@ -763,8 +842,8 @@ function applyCam() {
   const aspect = vw / vh;
   const w = cam.w, h = w / aspect;
   /* Leave room for the title block at the bottom of the stage. */
-  const home = !document.body.classList.contains("routed");
-  const offY = FILM ? h * .2 : vw <= 980 ? (home ? h * .07 : h * .1) : home ? h * .15 : h * .06;
+  const home = !document.body.classList.contains("routed") || hist.on;
+  const offY = FILM ? h * .2 : vw <= 980 ? (hist.on ? h * .03 : home ? h * .07 : h * .1) : home ? h * .15 : h * .06;
   const x = cam.cx - w / 2, y = cam.cy - h / 2 + offY;
   svg.setAttribute("viewBox", `${x} ${y} ${w} ${h}`);
   const k = vw / w;
@@ -796,7 +875,7 @@ stage.addEventListener("pointerup", endDrag); stage.addEventListener("pointercan
 stage.addEventListener("wheel", (e) => { e.preventDefault(); stopTour(); goal.w = Math.min(1100, Math.max(40, goal.w * Math.exp(e.deltaY * .0015))); }, { passive: false });
 $("zoomIn").addEventListener("click", () => { stopTour(); goal.w = Math.max(40, goal.w / 1.5); });
 $("zoomOut").addEventListener("click", () => { stopTour(); goal.w = Math.min(1100, goal.w * 1.5); });
-$("allBtn").addEventListener("click", () => { stopTour(); stopHistory(); setYear(NOW); select(""); });
+$("allBtn").addEventListener("click", () => { stopTour(); stopHistory(); select(""); });
 
 /* ---------- Timeline ---------- */
 /* Treaties appear in the year they were first signed, sites in the year they started. */
@@ -806,13 +885,13 @@ const EVENTS = TREATIES.map((t) => ({ y: t.y0, text: `${t.name} (${t.years})`, k
   .sort((a, b) => a.y - b.y);
 const yearIn = $("year"), yearOut = $("yearOut"), yearEvent = $("yearEvent"), playBtn = $("playBtn");
 yearIn.min = START; yearIn.max = NOW;
-let year = NOW, history = false;
+let year = NOW;
 function setYear(y) {
   year = Math.max(START, Math.min(NOW, y));
   const Y = Math.floor(year);
   yearIn.value = Y; yearOut.textContent = Y;
   const ev = EVENTS.filter((e) => e.y <= Y).pop();
-  yearEvent.textContent = Y >= NOW ? "Today" : ev ? `${ev.y} · ${ev.text}` : "Before the treaties on this map";
+  if (!hist.on) yearEvent.textContent = Y >= NOW ? "Today" : ev ? `${ev.y} · ${ev.text}` : "Before the treaties on this map";
   TREATIES.forEach((t) => t.el.classList.toggle("future", t.y0 > Y));
   STOPS.forEach((s) => { const hide = (s.since || 0) > Y; s.pinEl.classList.toggle("future", hide); s.ring.classList.toggle("future", hide); });
   flowEls.forEach((f) => {
@@ -824,26 +903,97 @@ function setYear(y) {
   return ev;
 }
 yearIn.addEventListener("input", () => { stopHistory(); stopTour(); if (state.id && state.id !== "lookup") select(""); setYear(+yearIn.value); });
-playBtn.addEventListener("click", () => { history ? stopHistory() : startHistory(); });
-function startHistory() {
-  stopTour(); if (state.id) select("");
-  history = true; playBtn.textContent = "Pause"; playBtn.setAttribute("aria-pressed", "true");
-  if (year >= NOW) setYear(START);
-  Object.assign(goal, homeView());
+
+/* ---------- History: one beat at a time ---------- */
+/* Everything is driven by dt from frame(), so the recorded film matches what a reader sees. */
+const BEATS = HISTORY.filter((b) => !FILM || b.film !== false);
+const treatyByName = Object.fromEntries(TREATIES.map((t) => [t.name, t]));
+TREATIES.forEach((t) => {
+  const xs = t.rings.flat().map((p) => p[0]), ys = t.rings.flat().map((p) => p[1]);
+  t.box = [Math.min(...xs), Math.min(...ys), Math.max(...xs), Math.max(...ys)];
+});
+function beatView(b) {
+  const boxes = (b.treaties || []).map((n) => treatyByName[n].box).concat((b.sites || []).map((id) => { const [x, y] = byId[id].xy; return [x - 8, y - 8, x + 8, y + 8]; }));
+  if (!boxes.length) return homeView();
+  const x0 = Math.min(...boxes.map((q) => q[0])), y0 = Math.min(...boxes.map((q) => q[1])), x1 = Math.max(...boxes.map((q) => q[2])), y1 = Math.max(...boxes.map((q) => q[3]));
+  /* Leave room for the caption under the map. */
+  return { cx: (x0 + x1) / 2, cy: (y0 + y1) / 2, w: Math.max(240, (x1 - x0) * 1.8, (y1 - y0) * (vw <= 980 ? 3.4 : 2.5) * vw / vh) };
 }
-function stopHistory() { history = false; playBtn.textContent = "Play history"; playBtn.setAttribute("aria-pressed", "false"); }
-/* Centuries pass quickly; the decades with nuclear sites slow down. */
-const yearSpeed = (y) => (y < 1840 ? 34 : y < 1930 ? 22 : 7.5);
+const ROLL = FILM ? .9 : 1.1;
+const dwell = (b) => (FILM ? 1.3 : 2.4) + b.text.replace(/&[a-z]+;/g, "'").length * (FILM ? .022 : .034);
+const hist = { on: false, paused: false, i: -1, clock: 0, roll: 0, from: 0 };
+function showBeat(i) {
+  const b = BEATS[i];
+  hist.i = i; hist.clock = 0; hist.roll = 0; hist.from = year;
+  TREATIES.forEach((t) => t.el.classList.toggle("now", (b.treaties || []).includes(t.name)));
+  STOPS.forEach((s) => s.pinEl.classList.toggle("new", (b.sites || []).includes(s.id)));
+  Object.assign(goal, beatView(b));
+  yearEvent.textContent = `${b.label} · ${b.title}`;
+  $("edTag").textContent = `Treaty history · ${i + 1} of ${BEATS.length}`;
+  $("brand").textContent = b.label;
+  $("lede").innerHTML = `<b>${esc(b.title)}.</b> ${b.text}`;
+  if (!FILM) { notes.innerHTML = histHTML(i); const cur = notes.querySelector(".beats .cur"); if (cur && notes.scrollHeight > notes.clientHeight) { const d = cur.getBoundingClientRect().top - notes.getBoundingClientRect().top; if (d > notes.clientHeight * .55) notes.scrollTop += d - 140; } }
+}
+function startHistory(at) {
+  if (!FILM) stopTour();
+  if (state.id) { state.id = ""; mark(""); }
+  hist.on = true; hist.paused = false;
+  document.body.classList.add("hist");
+  playBtn.textContent = "Pause"; playBtn.setAttribute("aria-pressed", "true");
+  if (!at) setYear(START);
+  showBeat(at || 0);
+  applyCam();
+}
+function pauseHistory(p) { hist.paused = p; playBtn.textContent = p ? "Play" : "Pause"; playBtn.setAttribute("aria-pressed", String(!p)); }
+function stopHistory() {
+  if (!hist.on) return;
+  hist.on = false; hist.i = -1;
+  document.body.classList.remove("hist");
+  TREATIES.forEach((t) => t.el.classList.remove("now"));
+  STOPS.forEach((s) => s.pinEl.classList.remove("new"));
+  playBtn.textContent = "Play history"; playBtn.setAttribute("aria-pressed", "false");
+  setYear(NOW);
+  select(state.id === "lookup" ? "" : state.id);
+}
+function stepBeat(d) {
+  const i = hist.i + d;
+  if (i < 0) return;
+  if (i >= BEATS.length) { stopHistory(); if (FILM) tourNext(); return; }
+  if (d < 0) setYear(i ? BEATS[i - 1].y : START);
+  showBeat(i);
+}
+playBtn.addEventListener("click", () => { !hist.on ? startHistory() : pauseHistory(!hist.paused); });
 function tickHistory(dt) {
-  if (!history) return;
-  const before = Math.floor(year);
-  const ev = setYear(year + yearSpeed(year) * dt);
-  if (FILM && Math.floor(year) !== before) {
-    $("brand").textContent = Math.floor(year);
-    $("lede").textContent = ev ? `${ev.y} · ${ev.text}` : "Before the treaties on this map";
+  if (!hist.on) return;
+  const b = BEATS[hist.i];
+  if (year < b.y) {
+    hist.roll += dt;
+    const k = Math.min(1, hist.roll / ROLL), e = 1 - Math.pow(1 - k, 3);
+    setYear(Math.min(b.y, hist.from + (b.y - hist.from) * e + .001));
+    if (k >= 1) setYear(b.y);
   }
-  if (year >= NOW) { setYear(NOW); stopHistory(); if (FILM) tourNext(); }
+  if (hist.paused) return;
+  hist.clock += dt;
+  if (hist.clock >= ROLL + dwell(b)) stepBeat(1);
 }
+function histHTML(i) {
+  const b = BEATS[i];
+  return `<p class="kicker">Treaty history · ${i + 1} of ${BEATS.length}</p>
+    <h2>The treaties, then the fuel</h2>
+    <ol class="beats">${BEATS.map((x, j) => `<li class="${j === i ? "cur" : j < i ? "done" : ""}"><button data-beat="${j}"><time>${esc(x.label)}</time><b>${esc(x.title)}</b></button>${j === i ? `<p>${x.text}</p>${refLinks(x.refs)}` : ""}</li>`).join("")}</ol>
+    <div class="stepper"><button data-beatstep="-1"${i ? "" : " disabled"}>&larr; Back</button><button data-beatstep="1">${i < BEATS.length - 1 ? "Next &rarr;" : "Finish &rarr;"}</button></div>
+    <p class="asof">Shaded areas: ${esc(SRC.histTreaty[0])}. Each beat's sources are listed under it.</p>`;
+}
+document.querySelector(".stagebar").addEventListener("click", (e) => {
+  const sb = e.target.closest("[data-beatstep]");
+  if (sb && hist.on) { pauseHistory(true); stepBeat(+sb.dataset.beatstep); }
+});
+document.addEventListener("keydown", (e) => {
+  if (!hist.on || (e.target.closest && e.target.closest("input, textarea"))) return;
+  if (e.key === "ArrowRight") { pauseHistory(true); stepBeat(1); }
+  if (e.key === "ArrowLeft") { pauseHistory(true); stepBeat(-1); }
+  if (e.key === "Escape") stopHistory();
+});
 
 /* ---------- Console ---------- */
 const state = { id: "", tour: false };
@@ -893,7 +1043,11 @@ notes.addEventListener("click", (e) => {
   const g = e.target.closest("[data-go]");
   if (g) { stopTour(); stopHistory(); setYear(NOW); g.dataset.go === "lookup" ? lookup() : select(g.dataset.go); }
   if (e.target.closest("#tourBtn")) { stopHistory(); setYear(NOW); startTour(); }
-  if (e.target.closest("#histBtn")) { setYear(START); startHistory(); stage.scrollIntoView({ block: "nearest" }); }
+  if (e.target.closest("#histBtn")) { startHistory(); stage.scrollIntoView({ block: "nearest" }); }
+  const jb = e.target.closest("[data-beat]");
+  if (jb && hist.on) { pauseHistory(true); const j = +jb.dataset.beat; setYear(j ? BEATS[j - 1].y : START); showBeat(j); }
+  const sb = e.target.closest("[data-beatstep]");
+  if (sb && hist.on) { pauseHistory(true); stepBeat(+sb.dataset.beatstep); }
 });
 
 function mark(id) {
@@ -905,7 +1059,8 @@ function mark(id) {
   document.body.classList.toggle("routed", !!s);
 }
 function select(id, opts) {
-  if (id && byId[id] && year < NOW) { stopHistory(); setYear(NOW); }
+  if (hist.on) { state.id = id; stopHistory(); return; }
+  if (id && byId[id] && year < NOW) setYear(NOW);
   state.id = id; mark(id);
   const s = byId[id];
   Object.assign(goal, s ? viewFor(s) : homeView());
@@ -915,6 +1070,7 @@ function select(id, opts) {
   $("lede").innerHTML = s ? s.film : esc(LEDE);
 }
 function lookup() {
+  stopHistory();
   state.id = "lookup"; mark("lookup"); Object.assign(goal, homeView());
   notes.innerHTML = lookupHTML(); notes.scrollTop = 0;
   $("brand").textContent = "Every Step of the Way"; $("edTag").textContent = "Treaty edition"; $("lede").textContent = LEDE;
@@ -925,13 +1081,10 @@ $("numbers").innerHTML = statHTML(NUMBERS) + `<p class="foot">${NUMBERS_NOTE}</p
 $("sources").innerHTML = Object.keys(SRC).map((k) => `<li><a href="${esc(SRC[k][1])}" target="_blank" rel="noopener">${esc(SRC[k][0])}</a></li>`).join("");
 
 /* ---------- Tour (also drives the film) ---------- */
-const TOUR = [{ t: 4.2, run: () => select("") }].concat(STOPS.map((s) => ({ t: s.hold || 3.7, run: () => select(s.id) })), [{ t: 4.8, run: () => { select(""); $("lede").textContent = FILM_END; } }]);
-if (FILM) TOUR.unshift({ t: Infinity, run: () => {
-  select(""); setYear(START); history = true; Object.assign(goal, { cx: 40, cy: 70, w: 820 });
-  $("edTag").textContent = "Treaty history"; $("brand").textContent = START; $("lede").textContent = "Before the treaties on this map";
-} });
+const TOUR = [{ t: 4.2, run: () => select("") }].concat(STOPS.map((s) => ({ t: s.hold || (FILM ? 3.0 : 3.7), run: () => select(s.id) })), [{ t: 4.8, run: () => { select(""); $("lede").textContent = FILM_END; } }]);
+if (FILM) TOUR.unshift({ t: Infinity, run: () => { select(""); startHistory(); } });
 let tourAt = 0, tourClock = 0;
-function startTour() { state.tour = true; tourAt = 0; tourClock = 0; TOUR[0].run(); }
+function startTour() { if (!FILM) stopHistory(); state.tour = true; tourAt = 0; tourClock = 0; TOUR[0].run(); }
 function stopTour() { state.tour = false; }
 function tourNext() { tourClock = 0; tourAt++; if (tourAt >= TOUR.length) { state.tour = false; if (FILM) window.__done = true; return; } TOUR[tourAt].run(); }
 function tickTour(dt) {
