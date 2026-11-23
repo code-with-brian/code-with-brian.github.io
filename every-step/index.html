@@ -160,6 +160,7 @@ button { font: inherit; color: inherit; }
 .ledger-in { max-width: 1120px; margin: 0 auto; padding-block: 56px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 56px; }
 .ledger h2 { margin: 0 0 6px; font: 800 38px/1 var(--display); text-wrap: balance; }
 .ledger p { margin: 0 0 16px; max-width: 58ch; }
+.ledger .notes-list { margin: 0 0 16px; padding-left: 18px; max-width: 58ch; display: flex; flex-direction: column; gap: 8px; }
 .ledger .wide { grid-column: 1 / -1; }
 .sources { columns: 2; column-gap: 40px; margin: 0; padding-left: 20px; font-size: 12.5px; line-height: 1.45; }
 .sources li { break-inside: avoid; margin-bottom: 6px; }
@@ -286,14 +287,20 @@ button { font: inherit; color: inherit; }
         <dl class="terms">
           <div><dt>Treaty</dt><dd>An agreement between the Crown and Indigenous Nations. The Crown's written text and a Nation's understanding of it can differ. Several Nations on this map say their treaty was never a surrender of land.</dd></div>
           <div><dt>Unceded</dt><dd>Land never given up by treaty or other agreement. In this map, the word is used only where the regulator or the Nation uses it.</dd></div>
-          <div><dt>Consent and consultation</dt><dd>Governments and regulators have a duty to consult Nations whose rights a project may affect. Many Nations hold that their free, prior and informed consent is required. The Chalk River case shows that question is still being decided in court.</dd></div>
+          <div><dt>Consent and consultation</dt><dd>Governments and regulators have a duty to consult Nations whose rights a project may affect. Many Nations hold that their free, prior and informed consent is required. The Chalk River case shows the courts are still working out what the UN Declaration means for consultation.</dd></div>
+          <div><dt>Who's who</dt><dd><b>CNSC</b>: the Canadian Nuclear Safety Commission, Canada's nuclear regulator. "The Commission" is its decision-making panel; "CNSC staff" are its regulatory staff. <b>OPG</b>: Ontario Power Generation. <b>CNL</b>: Canadian Nuclear Laboratories, which runs federal nuclear sites for <b>AECL</b>, Atomic Energy of Canada Limited. <b>NWMO</b>: the Nuclear Waste Management Organization. <b>CANDU</b>: Canada's own reactor design. <b>SMR</b>: small modular reactor.</dd></div>
         </dl>
       </div>
       <div>
         <h2>What this map is</h2>
         <p>A guide to where Canada's nuclear fuel cycle meets treaty and unceded land, built from regulator records, court decisions, company reports and the Nations' own statements. It describes what happened. It is not legal advice, and it doesn't take a position on what is owed.</p>
-        <p>The shaded areas come from the Government of Canada's Historic Treaties map data, published under the Open Government Licence – Canada. Its boundaries are approximate, it doesn't show unceded territory, and in places it disagrees with how Nations describe their own lands. Chalk River is one example: the federal map shades it as Williams Treaties land, while the regulator and Algonquin Nations call it unceded. The timeline shows each treaty in the year it was first signed. Play history steps through twelve moments; the sources for each caption are listed under it. The lines show the stages in order, not specific shipments. Fuel bundles are made in Port Hope and Peterborough; the CNSC says Peterborough's are for Pickering and Darlington. Pickering, now shut down, has no incoming line. BWXT's Toronto pellet plant and closed prototype reactors such as Douglas Point and Gentilly-1 are mentioned in their neighbours' pages rather than given their own pins.</p>
-        <p>Facts are current as of November 23, 2026. If you are from one of these Nations and something here is wrong or missing, it will be corrected.</p>
+        <ul class="notes-list">
+          <li><b>Treaty areas.</b> The shaded areas come from the Government of Canada's Historic Treaties map data, published under the Open Government Licence – Canada. Its boundaries are approximate, it doesn't show unceded territory, and in places it disagrees with how Nations describe their own lands. At Chalk River, for example, the federal map shades Williams Treaties land, while the CNSC and Algonquin Nations call it unceded.</li>
+          <li><b>Timeline.</b> Each treaty appears in the year it was first signed. Play history steps through twelve moments, with the sources for each listed beside it.</li>
+          <li><b>Lines.</b> They show the stages in order, not specific shipments. Fuel bundles are made in Port Hope and Peterborough; the CNSC says Peterborough's are for Pickering and Darlington. Pickering, now shut down, has no incoming line.</li>
+          <li><b>Not pinned.</b> BWXT's Toronto pellet plant and the closed prototype reactors Douglas Point and Gentilly-1 are covered on their neighbours' pages.</li>
+        </ul>
+        <p>Facts are current as of November 23, 2026. If you are from one of these Nations and something here is wrong or missing, please say so and it will be corrected.</p>
       </div>
 
       <div class="wide">
@@ -438,8 +445,8 @@ const STOPS = [
     id: "mines", since: 1983, sinceText: "Key Lake, the oldest of the four operating sites, starts up", tile: "Mines", pin: "Athabasca Basin", name: "Athabasca Basin mines and mills", stage: "Mine and mill", prov: "Saskatchewan",
     ll: [57.76305, -105.051742], zoom: 340, dx: 25, dy: -5,
     landShort: "Treaty 10 · Denesųłiné, Cree and Métis homelands",
-    role: "Cameco's McArthur River and Cigar Lake mines dig the ore. It is milled into uranium concentrate at Key Lake (Cameco) and McClean Lake (Orano).",
-    land: "The CNSC records all four operating sites as on <b>Treaty 10</b> (1906) territory and the Homeland of the Métis, within the traditional territories of the Denesųłiné, Cree and Métis. Nearby Nations signed different treaties: Black Lake and Fond du Lac Denesųłiné First Nations are Treaty 8 signatories, and Hatchet Lake is Treaty 10.",
+    role: "Cameco's McArthur River and Cigar Lake mines produce the ore, which is milled into uranium concentrate at Key Lake (Cameco) and McClean Lake (Orano).",
+    land: "The CNSC records all four operating sites as on <b>Treaty 10</b> (1906) territory and the Homeland of the Métis, within the traditional territories of the Denesųłiné, Cree and Métis. Not every nearby Nation signed Treaty 10: Black Lake and Fond du Lac Denesųłiné First Nations are Treaty 8 signatories, while Hatchet Lake is Treaty 10.",
     facts: [
       ["1906", "Treaty 10 is signed at Île-à-la-Crosse on August 28."],
       ["2012–17", "Cameco and Orano (called AREVA until 2018) sign collaboration agreements with Pinehouse and Kineepik Métis Local #9 (2012), English River First Nation (2013) and the Ya'thi Néné communities of Black Lake, Fond du Lac and Hatchet Lake (2016). Cameco signs with Lac La Ronge Indian Band (2017)."],
@@ -458,11 +465,11 @@ const STOPS = [
     role: "Cameco refines uranium ore concentrate into uranium trioxide (UO&#8323;), which goes to Port Hope.",
     land: "The <b>Robinson-Huron Treaty</b> of 1850. The refinery sits just south of Mississauga First Nation (Misswezhaging), a signatory. The Nation says it &ldquo;has never surrendered rights to access or use the resources within its Traditional Territories.&rdquo;",
     facts: [
-      ["1850", "The Robinson-Huron Treaty is signed in Sault Ste. Marie on September 9."],
+      ["1850", "The Robinson-Huron Treaty is signed in Sault Ste. Marie on September 9. Its annuity, the yearly payment to each member, rises only once, to $4 a person in 1875."],
       ["2022", "The CNSC renews the licence for 10 years, to 2032. Mississauga First Nation had said it &ldquo;cannot support a licence renewal at this time.&rdquo;"],
-      ["2023–24", "The treaty's annuity rose only once, to $4 a person in 1875. Canada and Ontario settle past losses with the 21 Robinson-Huron First Nations for $10 billion. In July 2024 the Supreme Court calls the Crown's breach &ldquo;longstanding and egregious.&rdquo;"],
+      ["2023–24", "Canada and Ontario settle the 21 Robinson-Huron First Nations' claim for unpaid annuities for $10 billion. In July 2024 the Supreme Court calls the Crown's breach &ldquo;longstanding and egregious.&rdquo;"],
     ],
-    short: ["Still unresolved", "In an April 2024 Band Council Resolution, Mississauga First Nation says it &ldquo;has never consented to the lands being used for nuclear activities.&rdquo; In October 2026 it opposed what it describes as Cameco's plan to consolidate and dispose of waste from its facilities at Blind River."],
+    short: ["Still unresolved", "In an April 2024 Band Council Resolution, Mississauga First Nation says it &ldquo;has never consented to the lands being used for nuclear activities.&rdquo; In October 2026 it opposed what it describes as Cameco's plan to consolidate and dispose of waste from Cameco's facilities at Blind River."],
     refs: ["cnscFuel", "blindCnsc", "brr22", "onMap", "mfnAssert", "mfn21", "rhSettle", "restoule", "mfn26"],
     film: "Refined beside Mississauga First Nation, on Robinson-Huron Treaty land.",
   },
@@ -470,31 +477,31 @@ const STOPS = [
     id: "porthope", since: 1935, sinceText: "Uranium products are first made at Port Hope", tile: "Port Hope", pin: "Port Hope", name: "Port Hope", stage: "Convert", prov: "Ontario",
     ll: [43.943554, -78.295349], zoom: 95, dx: -8,
     landShort: "Gunshot Treaty and Williams Treaties · Michi Saagiig Anishinaabeg",
-    role: "Cameco converts UO&#8323; into uranium dioxide and uranium hexafluoride. Canadian Nuclear Laboratories is also cleaning up historic low-level radioactive waste in the area through the Port Hope Area Initiative. About 2 km away, Cameco Fuel Manufacturing makes fuel bundles.",
+    role: "Cameco converts the UO&#8323; from Blind River into uranium dioxide and uranium hexafluoride. Canadian Nuclear Laboratories (CNL) is also cleaning up historic low-level radioactive waste in the area through the Port Hope Area Initiative. About 2 km away, Cameco Fuel Manufacturing makes fuel bundles.",
     land: "The CNSC says the site lies within the traditional lands and waters of the <b>Michi Saagiig Anishinaabeg</b>, under the <b>Gunshot Treaty</b> (1787–88), the <b>Williams Treaties</b> (1923) and the Williams Treaties Settlement Agreement (2018). Hiawatha First Nation says Cameco operates &ldquo;within our Treaty Territory.&rdquo;",
     facts: [
-      ["1788", "The Gunshot Treaty covers the north shore of Lake Ontario. Ontario says these lands were the subject of a &ldquo;confirmatory surrender&rdquo; in the Williams Treaties of 1923."],
+      ["1788", "The Gunshot Treaty covers the north shore of Lake Ontario. Ontario dates it to 1788, and says these lands were the subject of a &ldquo;confirmatory surrender&rdquo; in the Williams Treaties of 1923."],
       ["1935", "Uranium products are first made on the Port Hope site, according to the CNSC and Cameco."],
       ["2018", "Canada and Ontario settle litigation the seven Williams Treaties First Nations began in 1992. The settlement includes $1.11 billion, up to 11,000 acres of new reserve land for each Nation, recognition of treaty harvesting rights, and apologies delivered at Rama on November 17."],
       ["2026", "Cameco asks for a 20-year licence. The Mississaugas of Scugog Island support it. Alderville says the Commission &ldquo;cannot find that the Honour of the Crown has been upheld.&rdquo; Hiawatha asks for formal reviews at years 5 and 15."],
     ],
-    short: ["Still unresolved", "Even while supporting renewal, the Mississaugas of Scugog Island say they have &ldquo;never provided consent for the siting or operation of nuclear facilities&rdquo; in their territory, where nearly every stage of the fuel cycle except mining takes place."],
+    short: ["Still unresolved", "Even while supporting renewal, the Mississaugas of Scugog Island say they have &ldquo;never provided consent for the siting or operation of nuclear facilities&rdquo; in their territory."],
     asof: "As of November 23, 2026, the licence decision is pending.",
     refs: ["phcf", "phCnsc", "phCameco", "cfm", "phai", "onMap", "hfn26", "wtSettle", "wtTimeline", "wtApology", "msifn26", "afn26"],
     film: "Converted on Williams Treaties land, home of the Michi Saagiig Anishinaabeg.",
   },
   {
-    id: "peterborough", since: 1955, sinceText: "The Peterborough fuel plant starts operating, by the CNSC's record", tile: "Peterborough", pin: "Peterborough", name: "BWXT Peterborough", stage: "Fuel bundles", prov: "Ontario",
+    id: "peterborough", since: 1955, sinceText: "The Peterborough plant starts operating, by the CNSC's record", tile: "Peterborough", pin: "Peterborough", name: "BWXT Peterborough", stage: "Fuel bundles", prov: "Ontario",
     ll: [44.295956, -78.333725], zoom: 95, dy: -6,
     landShort: "Treaty 20 and Williams Treaties · Michi Saagiig Anishinaabeg",
-    role: "BWXT Nuclear Energy Canada assembles fuel bundles here from uranium dioxide pellets made at its Toronto plant. The CNSC says these bundles are for OPG's Pickering and Darlington stations. It lists the start of operation as 1955, and the licence runs to 2030.",
+    role: "BWXT Nuclear Energy Canada assembles fuel bundles here from uranium dioxide pellets made at its Toronto plant. The CNSC says the bundles are for Ontario Power Generation's (OPG) Pickering and Darlington stations. Its records give the plant's start of operation as 1955, and its licence runs to 2030.",
     land: "The CNSC says the plant is on <b>Treaty 20</b> Michi Saagiig territory, in the traditional territory of the Michi Saagiig and Chippewa Nations known as the Williams Treaties First Nations. Curve Lake First Nation says the site is within its homelands, covered by Treaty 20 (1818) and the <b>Williams Treaties</b> (1923).",
     facts: [
       ["1818", "Treaty 20 is signed on November 5."],
       ["2020", "At the licence renewal hearing, Curve Lake and Hiawatha First Nations present together. Curve Lake says it wasn't told about BWXT's request to make fuel pellets in Peterborough, and BWXT acknowledges it &ldquo;needed to improve its engagement process.&rdquo;"],
       ["2026", "In a written submission for the mid-term review, Curve Lake says relationship building with BWXT &ldquo;is satisfactory and is constrained by time and bandwidth.&rdquo;"],
     ],
-    short: ["Still unresolved", "The Commission found the duty to consult was not engaged by the 2020 renewal. It approved pelleting in Peterborough by majority, with one member opposed, and in 2026 CNSC staff said pelleting can't begin until uranium air monitoring is in place."],
+    short: ["Still unresolved", "The Commission, the CNSC's decision-making panel, found that the 2020 renewal did not trigger the duty to consult. It approved making fuel pellets in Peterborough by a majority, with one member opposed. In 2026, CNSC staff said pellet-making can't begin until uranium air monitoring is in place."],
     asof: "Status as of November 23, 2026.",
     refs: ["bwxt", "bwxt20", "bwxt24", "onMap", "clfn26", "bwxtStaff26"],
     film: "Fuel bundles are assembled on Treaty 20 land, in Michi Saagiig territory.",
@@ -503,15 +510,15 @@ const STOPS = [
     id: "bruce", since: 1977, sinceText: "Bruce Units 1 and 2 enter service", tile: "Bruce", pin: "Bruce", name: "Bruce Power", stage: "Power", prov: "Ontario",
     ll: [44.340402, -81.5755], zoom: 110,
     landShort: "Saugeen Ojibway Nation territory",
-    role: "Bruce Power's eight CANDU reactors on Lake Huron.",
+    role: "Bruce Power runs eight CANDU reactors, Canada's home-grown design, on Lake Huron.",
     land: "The CNSC says the site is in <b>Saukiing Anishnaabekiing</b>, the territory of the <b>Saugeen Ojibway Nation</b>: Saugeen First Nation and the Chippewas of Nawash Unceded First Nation. It is also harvesting territory of the Métis Nation of Ontario Region 7 and the Historic Saugeen Métis. Ontario lists Treaty 45½ (1836) and Treaty 72 (1854) for the area. We couldn't find a source saying which one covers the station itself.",
     facts: [
       ["1968–84", "Douglas Point, a prototype CANDU on the same site, enters service in 1968 and shuts down in 1984. CNL is now carrying out its final decommissioning, under a licence to 2030."],
       ["1977", "Bruce Units 1 and 2 enter service."],
       ["2020", "On January 31, Saugeen Ojibway Nation members vote 1,058 to 170 against OPG's proposed deep geologic repository for low- and intermediate-level waste at the Bruce site. OPG says it respects the decision, and it later withdraws its licence application."],
-      ["2026", "Saugeen Ojibway Nation and Bruce Power announce a $250-million expansion of their isotope partnership, Gamzook'aamin aakoziwin. A separate revenue-sharing agreement pays $10 million a year, shared equally between the two First Nations."],
+      ["2026", "Saugeen Ojibway Nation and Bruce Power announce a $250-million expansion of their isotope partnership, Gamzook'aamin aakoziwin. A separate revenue-sharing agreement pays $10 million a year, shared equally between Saugeen First Nation and the Chippewas of Nawash."],
     ],
-    short: ["Still unresolved", "In 2025, by Bruce Power's estimate, up to close to 5 million gizzard shad died at Bruce A. Two federal Fisheries Act charges have been laid, and there has been no finding of guilt. Saugeen Ojibway Nation says such deaths can't be &ldquo;an acceptable consequence of industrial operations in our Territory.&rdquo;"],
+    short: ["Still unresolved", "In 2025, millions of gizzard shad died at the site's Bruce A station; Bruce Power estimates &ldquo;up to close to 5 million.&rdquo; The company faces two federal Fisheries Act charges, with no finding of guilt. Saugeen Ojibway Nation says such deaths can't be &ldquo;an acceptable consequence of industrial operations in our Territory.&rdquo;"],
     asof: "As of November 23, 2026, the charges are before the court.",
     refs: ["bruce", "bpHist", "dp", "dpCnl", "onMap", "sonVote", "opgWithdraw", "sonIso", "sonFish"],
     film: "Power on Saugeen Ojibway Nation territory, where members voted down a waste repository in 2020.",
@@ -521,9 +528,9 @@ const STOPS = [
     ll: [43.811287, -79.057037], zoom: 95, dx: 10,
     landShort: "Gunshot Treaty and Williams Treaties · Michi Saagiig Anishinaabeg",
     role: "OPG's station on Lake Ontario, east of Toronto. As of October 2026 the CNSC lists every unit as shut down or in safe storage, and OPG has applied to refurbish units 5 to 8. Used fuel is stored on site.",
-    land: "The CNSC uses the same wording as at Port Hope: Michi Saagiig Anishinaabeg lands and waters, under the Gunshot Treaty, the Williams Treaties and the 2018 settlement. Four Michi Saagiig Nations say they &ldquo;have never ceded title or jurisdiction over Lake Ontario's waters or lakebed.&rdquo;",
+    land: "The CNSC uses the same wording as at Port Hope: Michi Saagiig Anishinaabeg lands and waters, under the Gunshot Treaty, the Williams Treaties and the 2018 settlement. Four Michi Saagiig Nations (Alderville, Curve Lake, Hiawatha and Scugog Island) say they &ldquo;have never ceded title or jurisdiction over Lake Ontario's waters or lakebed.&rdquo;",
     facts: [
-      ["1971", "The first Pickering units start up. Units 1 to 4 come into service between 1971 and 1973."],
+      ["1971–73", "Units 1 to 4 come into service."],
       ["2018", "The Williams Treaties settlement and apologies (see Port Hope). The Nations say the settlement &ldquo;is silent on Lake Ontario and the question of lakebed cession.&rdquo;"],
       ["2026", "OPG reports Framework Agreements with Alderville, Curve Lake, Hiawatha, Mississaugas of Scugog Island and Six Nations of the Grand River."],
       ["Oct 2026", "The CNSC holds the second part of its hearing on refurbishment and licence renewal."],
@@ -537,51 +544,51 @@ const STOPS = [
     id: "darlington", since: 1990, sinceText: "Darlington's first unit enters service", tile: "Darlington", pin: "Darlington", name: "Darlington", stage: "Power", prov: "Ontario",
     ll: [43.869301, -78.724899], zoom: 95,
     landShort: "Gunshot Treaty and Williams Treaties · Michi Saagiig Anishinaabeg",
-    role: "Four refurbished CANDU reactors. A BWRX-300 small modular reactor is licensed for construction here, the first of up to four planned at the site.",
+    role: "OPG's four refurbished CANDU reactors on Lake Ontario. A BWRX-300 small modular reactor (SMR) is licensed for construction here, the first of up to four planned at the site.",
     land: "The same treaties as Pickering, in the CNSC's words. Alderville, Curve Lake, Hiawatha and Scugog Island say that &ldquo;our ancestral and treaty lands include the site of this project.&rdquo;",
     facts: [
       ["1990–93", "Darlington's four units come into service."],
       ["2025", "On April 4 the CNSC issues the SMR construction licence, valid to 2035. At the Michi Saagiig Nations' request, it adds a condition requiring project-specific Indigenous engagement."],
       ["2026", "On June 23 the seven Williams Treaties First Nations announce a $700-million investment in the project, backed by a federal Indigenous loan guarantee. The Chiefs: &ldquo;Our investment in this project does not change our Treaty and Aboriginal Rights.&rdquo;"],
     ],
-    short: ["Still unresolved", "At the January 2025 hearing, the Michi Saagiig Nations said CNSC staff treated them &ldquo;as stakeholders instead of rights holders&rdquo; and that the lakebed at the site &ldquo;is unceded territory.&rdquo; Saugeen Ojibway Nation objected to possible future waste on its territory without its consent."],
+    short: ["Still unresolved", "At the January 2025 hearing, the Michi Saagiig Nations said CNSC staff treated them &ldquo;as stakeholders instead of rights holders&rdquo; and that the lakebed at the site &ldquo;is unceded territory.&rdquo; The Commission recognized that Saugeen Ojibway Nation (SON), home to the Bruce site, does not want waste from the project &ldquo;to be transported to, or stored on, SON territory without their consent.&rdquo;"],
     refs: ["darlington", "dnnpRod", "dnnpNews", "msJoint", "wtfnInvest", "finInvest"],
     film: "The Williams Treaties First Nations are now investors in the Darlington SMR project, and say their rights are unchanged.",
   },
   {
-    id: "chalk", since: 1945, sinceText: "The ZEEP reactor goes critical at Chalk River", fedNote: "The site sits just inside the northern edge of that area. The CNSC and Algonquin Nations describe the site as unceded Algonquin territory. The federal map and the Nations don't agree here, so we show both.", tile: "Chalk River", pin: "Chalk River", name: "Chalk River", stage: "Research", prov: "Ontario",
+    id: "chalk", since: 1945, sinceText: "The ZEEP reactor goes critical at Chalk River", fedNote: "In the full federal data, the site falls just inside the area's northern edge, closer than the simplified outline drawn here can show. The CNSC and Algonquin Nations describe it as unceded Algonquin territory, so we show both.", tile: "Chalk River", pin: "Chalk River", name: "Chalk River", stage: "Research", prov: "Ontario",
     ll: [46.049915, -77.363991], zoom: 120,
     landShort: "Unceded Algonquin Anishinaabeg territory",
-    role: "Canadian Nuclear Laboratories runs this federal research site for AECL. In 2024 the CNSC authorized a near-surface radioactive waste disposal facility here, about a kilometre from the Ottawa River, Kichi Sibi.",
+    role: "Canadian Nuclear Laboratories (CNL) runs this federal research site for Atomic Energy of Canada Limited (AECL), a federal Crown corporation. In 2024 the CNSC authorized a near-surface radioactive waste disposal facility here, about a kilometre from the Ottawa River, Kichi Sibi.",
     land: "The CNSC calls it the &ldquo;traditional unceded territory of the <b>Algonquin Anishinaabeg</b> peoples.&rdquo; No treaty is cited. The Algonquins of Ontario say the site is in their settlement area, where they assert unextinguished rights and title. Algonquin Nations hold different positions on the disposal facility, so we list them separately.",
     facts: [
       ["1945", "On September 5 the ZEEP reactor first goes critical at Chalk River."],
-      ["2023", "The Algonquins of Pikwàkanagàn give their free, prior and informed consent under a long-term agreement with CNL and AECL. Kebaowek First Nation and the Algonquin Anishinabeg Nation Tribal Council urge Ottawa to abandon the plan."],
+      ["2023", "The Algonquins of Pikwàkanagàn give their free, prior and informed consent under a long-term agreement with CNL and AECL. Kebaowek First Nation and the Algonquin Anishinabeg Nation Tribal Council urge the federal government to abandon the plan."],
       ["2024", "The CNSC authorizes construction. Kitigan Zibi Anishinabeg say it was approved &ldquo;without proper consultation.&rdquo;"],
-      ["2025", "In a case brought by Kebaowek, the Federal Court finds the UN Declaration on the Rights of Indigenous Peoples (UNDRIP) is an &ldquo;added contextual layer&rdquo; for the duty to consult, and orders renewed consultation."],
-      ["2026", "In September Kebaowek suspends the renewed talks over funding, which the CNSC disputes. On October 16 the Federal Court of Appeal sets the 2025 ruling aside and upholds the approval. On November 16 Kebaowek asks the Supreme Court for leave to appeal."],
+      ["2025", "In a case brought by Kebaowek, the Federal Court finds the UN Declaration on the Rights of Indigenous Peoples is an &ldquo;added contextual layer&rdquo; for the duty to consult, and orders renewed consultation."],
+      ["2026", "In September Kebaowek suspends the renewed talks, citing funding; the CNSC disputes its account. On October 16 the Federal Court of Appeal sets the 2025 ruling aside and upholds the approval. On November 16 Kebaowek asks the Supreme Court for leave to appeal."],
     ],
-    short: ["Still unresolved", "The appeal court held that the CNSC is not the &ldquo;Government of Canada&rdquo; under the federal UN Declaration Act. Kebaowek wants the Supreme Court to hear the case quickly because it fears construction could begin as early as 2027."],
+    short: ["Still unresolved", "The appeal court held that the CNSC is not the &ldquo;Government of Canada&rdquo; under the federal United Nations Declaration on the Rights of Indigenous Peoples Act. Kebaowek wants the Supreme Court to hear the case quickly because it fears construction could begin as early as 2027."],
     asof: "As of November 23, 2026, there has been no decision on leave.",
     refs: ["zeep", "nsdf24", "aoo22", "aopfn", "kfnJoint", "kzaNsdf", "fc2025", "kfnTalks", "fca2026", "scc2026"],
-    film: "On unceded Algonquin territory, a waste facility's approval is headed for the Supreme Court.",
+    film: "On unceded Algonquin territory, Kebaowek First Nation is asking the Supreme Court to hear its case against a waste facility.",
   },
   {
-    id: "whiteshell", since: 1965, sinceText: "The WR-1 reactor starts up at Whiteshell", fedNote: "The CNSC names more than one treaty here, and Sagkeeng describes its territory across three, so the federal outline is only part of the picture.", tile: "Whiteshell", pin: "Whiteshell", name: "Whiteshell Laboratories", stage: "Decommission", prov: "Manitoba",
+    id: "whiteshell", since: 1965, sinceText: "The WR-1 reactor starts up at Whiteshell", fedNote: "The CNSC names more than one treaty here, and Sagkeeng describes its territory across three, so the federal outline is only part of the picture.", tile: "Whiteshell", pin: "Whiteshell", name: "Whiteshell Laboratories", stage: "Decommissioning", prov: "Manitoba",
     ll: [50.211037, -95.875923], zoom: 170,
     landShort: "Treaty 1 and Treaty 3 · Sagkeeng Anicinabe Nation",
     role: "A former AECL research site near Pinawa, now being decommissioned by Canadian Nuclear Laboratories. Its WR-1 reactor ran from 1965 to 1985 and is in storage with surveillance.",
     land: "The CNSC says the site is on the homeland of the Red River Métis, in <b>Treaty 1</b> and <b>Treaty 3</b> territories and the traditional territory of the Anishinaabe and Ojibway Peoples, and near Treaty 5 territory. Sagkeeng Anicinabe Nation, a Treaty 1 signatory, says its &ldquo;traditional and unsurrendered territory includes lands and waters within the boundaries of Treaties 3 and 5.&rdquo;",
     facts: [
       ["1871", "Sagkeeng's ancestors sign Treaty 1."],
-      ["2019–22", "At the 2019 licence hearing, Sagkeeng describes &ldquo;ongoing fear and avoidance of the WL site&rdquo; in the community. In 2022 its members join CNSC staff in the field to take samples together."],
+      ["2019–22", "At the 2019 licence hearing, Sagkeeng describes &ldquo;ongoing fear and avoidance of the WL site&rdquo; (Whiteshell Laboratories) in the community. In 2022 its members join CNSC staff in the field to take samples together."],
       ["2024", "The CNSC renews the decommissioning licence to the end of 2027. Decommissioning WR-1 in place is outside the scope of that licence."],
       ["Aug 2026", "Sagkeeng, CNL and AECL sign a bridging agreement. Their joint release says the site was set up &ldquo;without Sagkeeng's consent or meaningful participation.&rdquo; Chief Ej Fontaine: &ldquo;This is not the finish line.&rdquo;"],
     ],
-    short: ["Still unresolved", "No decision has been made on CNL's plan to decommission WR-1 in place. The review of the draft impact statement finished in August 2025, and the final statement, hearing and decision are all listed as to be confirmed."],
+    short: ["Still unresolved", "No decision has been made on CNL's plan to decommission WR-1 in place. The review of the draft impact statement finished in August 2025, and the final statement, hearing and decision have no dates yet."],
     asof: "As of November 23, 2026, there is no decision on WR-1.",
     refs: ["wl", "wl24", "wlCmd", "wr1", "sagHist", "sagBridge"],
-    film: "At Whiteshell, a joint release says the site was set up without Sagkeeng's consent.",
+    film: "Sagkeeng, CNL and AECL now say together that Whiteshell was set up without Sagkeeng's consent.",
   },
   {
     id: "gentilly", since: 1983, sinceText: "Gentilly-2 starts operating", tile: "Gentilly-2", pin: "Gentilly-2", name: "Gentilly-2", stage: "Shut down", prov: "Quebec",
@@ -590,14 +597,14 @@ const STOPS = [
     role: "Hydro-Québec's CANDU reactor on the St. Lawrence. It stopped operating on December 28, 2012, and is being decommissioned, with waste stored on site.",
     land: "The CNSC (2026) says the site is on the unceded traditional territory of the Abénakis and the <b>W8banaki</b> council, and on the traditional territory of the <b>Wendat</b>. The W8banaki Nation's communities are Odanak and W8linak, and it calls its territory Ndakina: &ldquo;Our Territory.&rdquo; None of the sources we opened names a treaty for this site.",
     facts: [
-      ["1972", "Gentilly-1, a prototype CANDU next door, enters service. It runs only intermittently until 1978. As of November 2026, CNL's request to fully decommission it was pending."],
+      ["1972", "Gentilly-1, a prototype CANDU next door, enters service. It runs only intermittently until 1978. As of November 23, 2026, CNL's request to fully decommission it is pending."],
       ["1983", "Gentilly-2 starts operating on October 1."],
       ["2021", "Archaeologists from the W8banaki Ndakina office survey for traces of the Nation's occupation along the Gentilly River."],
-      ["2022", "Quebec and the Grand Conseil de la Nation Waban-Aki sign a consultation and accommodation agreement."],
+      ["2022", "Quebec and the Grand Conseil de la Nation Waban-Aki, the W8banaki Nation's council, sign a consultation and accommodation agreement."],
       ["2023", "Hydro-Québec studies a restart, then says its Action Plan 2035 includes no nuclear power and decommissioning will continue."],
       ["2026", "The decommissioning licence is renewed to 2046."],
     ],
-    short: ["Still unresolved", "The Commission found the 2026 renewal did not trigger the duty to consult, and it received no interventions from Indigenous Nations. That is a finding about process. It is not evidence that the Nations have no concerns."],
+    short: ["Still unresolved", "The Commission found the 2026 renewal did not trigger the duty to consult, and it received no interventions from Indigenous Nations. The finding concerns process only. It does not record the Nations' views on the site."],
     refs: ["hqMain", "g2Cnsc", "g1", "g1Rod", "g2Rod", "w8", "hqNews", "qcW8", "ctvG2", "hqG2"],
     film: "Closed on the St. Lawrence, in Ndakina, the W8banaki territory.",
   },
@@ -606,31 +613,32 @@ const STOPS = [
     ll: [45.06889, -66.45472], zoom: 150,
     landShort: "Peace and Friendship Treaties · Wolastoqey and Peskotomuhkati",
     role: "NB Power's single CANDU reactor on the Bay of Fundy, licensed to 2032. Used fuel is stored on site. In 2023 NB Power applied to prepare the site for an ARC-100 small modular reactor.",
-    land: "The CNSC says the territory is covered by the <b>Peace and Friendship Treaties</b> with the Maliseet, Passamaquoddy and Mi'gmaq peoples. The Wolastoqey Nation calls them &ldquo;treaties of peace and alliance – not land surrender or cession,&rdquo; and says the station runs &ldquo;on unceded, unsurrendered land and water.&rdquo; The Peskotomuhkati say it &ldquo;exists within Peskotomuhkatihkuk.&rdquo;",
+    land: "The CNSC says the site is on territory covered by the <b>Peace and Friendship Treaties</b> with the Maliseet (Wolastoqiyik), Passamaquoddy (Peskotomuhkati) and Mi'gmaq peoples. The Wolastoqey Nation calls them &ldquo;treaties of peace and alliance – not land surrender or cession,&rdquo; and says the station runs &ldquo;on unceded, unsurrendered land and water.&rdquo; The Peskotomuhkati say it &ldquo;exists within Peskotomuhkatihkuk.&rdquo;",
     facts: [
       ["1983", "The station starts operating on February 1."],
       ["2018", "Mi'gmawe'l Tplu'taqnn Inc., which represents nine Mi'gmaq communities, signs a relationship and consultation agreement with NB Power."],
       ["2020", "On December 1 the Wolastoqey Nation files an Aboriginal title claim over roughly half of New Brunswick. It says the station site is included."],
-      ["2022", "The CNSC renews the licence for 10 years. NB Power had asked for 25. The Peskotomuhkati group asked for 3."],
-      ["2026", "On May 28 the Supreme Court declines to hear the Wolastoqey Nation's appeal of a 2025 ruling that limited title declarations to Crown land, so the claim continues against the Crown. The Nation says the refusal doesn't mean the Court agrees with that ruling."],
+      ["2022", "The CNSC renews the licence for 10 years. NB Power had asked for 25. The Passamaquoddy Recognition Group asked for 3."],
+      ["2026", "On May 28 the Supreme Court declines to hear the Wolastoqey Nation's appeal of a 2025 ruling that limited title declarations to Crown land, so the claim continues for Crown land only. The Nation says the refusal doesn't mean the Court agrees with that ruling."],
     ],
-    short: ["Still unresolved", "At the 2022 hearing, Kopit Lodge and Elsipogtog First Nation noted &ldquo;the absence of suitable consultation at the time the PLNGS was constructed.&rdquo; As of late 2025, Canada was still negotiating with the Peskotomuhkati Nation over recognizing it as a band."],
+    short: ["Still unresolved", "At the 2022 hearing, Kopit Lodge and Elsipogtog First Nation noted &ldquo;the absence of suitable consultation at the time the PLNGS [Point Lepreau station] was constructed.&rdquo; According to a 2025 federal briefing note, Canada was still negotiating with the Peskotomuhkati Nation over recognizing it as a band."],
     refs: ["lepCnsc", "lepRod", "wnnbPft", "wnnb24", "prgi", "pesko", "cassels", "arc", "peskoBn"],
     film: "Power on Peace and Friendship Treaty land, which the Wolastoqey say was never surrendered.",
   },
   {
     id: "revell", since: 2024, sinceText: "NWMO selects the repository site", tile: "Repository", pin: "Revell site", name: "The repository site", stage: "Planned", prov: "Ontario",
     ll: [49.59, -92.2], zoom: 190,
-    landShort: "Treaty #3 · Wabigoon Lake Ojibway Nation",
-    role: "The Nuclear Waste Management Organization's proposed deep geological repository for all of Canada's used nuclear fuel. It would sit between Wabigoon Lake Ojibway Nation and Ignace, and NWMO estimates construction will start in 2033. The map location is approximate.",
-    land: "Wabigoon Lake Ojibway Nation says the site is in its traditional territory. Grand Council Treaty #3 says it is &ldquo;entirely within <b>Treaty #3</b> Territory&rdquo; and subject to the Nation's law, Manito Aki Inaakonigewin. Treaty 3 was signed on October 3, 1873.",
+    landShort: "Treaty 3 · Wabigoon Lake Ojibway Nation",
+    role: "The Nuclear Waste Management Organization (NWMO) proposes a deep geological repository here for all of Canada's used nuclear fuel. The Revell site is about 30 km west of Ignace, between the township and Wabigoon Lake Ojibway Nation. NWMO estimates construction will start in 2033. The map location is approximate.",
+    land: "Wabigoon Lake Ojibway Nation says the site is in its traditional territory. Grand Council Treaty #3 says it is &ldquo;entirely within <b>Treaty #3</b> Territory&rdquo; and subject to Manito Aki Inaakonigewin, Treaty #3's own law.",
     facts: [
-      ["Jul 2024", "Ignace council endorses willingness to host. In the township's resident process, 77.3% voted in favour."],
-      ["Nov 2024", "Wabigoon Lake Ojibway Nation votes yes. In its own words, the vote &ldquo;does not signify approval of the project.&rdquo; It is a willingness to enter the next phase of assessment."],
+      ["1873", "Treaty 3 is signed on October 3."],
+      ["Jul 2024", "Ignace's council endorses the township's willingness to host. In the township's vote, 77.3% of those who voted were in favour."],
+      ["Nov 2024", "Wabigoon Lake Ojibway Nation votes yes. In its own words, the vote &ldquo;does not signify approval of the project.&rdquo; The Nation says it is a willingness to enter the next phase of assessment."],
       ["Nov 2024", "NWMO selects the site and agrees to a regulatory process that Wabigoon Lake Ojibway Nation will develop and run."],
-      ["2026", "The federal impact assessment begins on June 26 under a review panel. The project has been referred for possible listing under the Building Canada Act, with no listing decision yet."],
+      ["2026", "The federal impact assessment begins on June 26 under a review panel. The federal government is also considering listing it under the Building Canada Act as a project of national interest; no decision yet."],
     ],
-    short: ["Still unresolved", "Grand Council Treaty #3 calls the siting &ldquo;unilateral and not collaborative&rdquo; and says storing the waste was never its duty, while still working with NWMO. Eagle Lake First Nation has gone to Federal Court. Nine northern Nations said in 2024, &ldquo;we have not given our consent.&rdquo; The federal agency's summary of public comments lists leaving transportation out of the assessment's scope as a concern."],
+    short: ["Still unresolved", "Grand Council Treaty #3 calls the siting &ldquo;unilateral and not collaborative&rdquo; and says storing the waste was never its duty, while still working with NWMO. Eagle Lake First Nation has gone to Federal Court over the project. Nine northern Nations said of the plan in 2024, &ldquo;we have not given our consent.&rdquo; The Impact Assessment Agency's summary of public comments lists leaving transportation out of the assessment's scope as a concern."],
     asof: "Status as of November 23, 2026.",
     refs: ["wlon", "gct3", "t3", "ignace", "nwmoSite", "nwmoReg", "iaac", "bca", "elfn", "nineFn", "iaacIssues"],
     film: "Wabigoon Lake says its yes was to further study, not approval.",
@@ -682,7 +690,7 @@ const HISTORY = [
     text: "Uranium products are first made at Port Hope in 1935. In 1945 the ZEEP reactor goes critical at Chalk River, on land the CNSC calls unceded Algonquin territory.",
     refs: ["phCnsc", "phCameco", "zeep", "nsdf24"] },
   { y: 1972, label: "1955–1972", title: "The industry spreads", sites: ["peterborough", "whiteshell", "pickering"],
-    text: "Fuel bundles at Peterborough (1955), the WR-1 reactor at Whiteshell (1965), Douglas Point (1968), Pickering (1971) and Gentilly-1 (1972).",
+    text: "The Peterborough plant (1955), the WR-1 reactor at Whiteshell (1965), Douglas Point (1968), Pickering (1971) and Gentilly-1 (1972).",
     refs: ["bwxt", "wl", "dp", "pickering", "g1"] },
   { y: 1990, label: "1977–1990", title: "The fuel cycle fills in", sites: ["bruce", "mines", "blind", "lepreau", "gentilly", "darlington"],
     text: "Bruce (1977). Key Lake, Blind River, Point Lepreau and Gentilly-2 (1983). Darlington (1990).",
@@ -691,18 +699,18 @@ const HISTORY = [
     text: "Canada and Ontario settle with the seven Williams Treaties First Nations for $1.11 billion and other terms, and apologize at Rama on November 17.",
     refs: ["wtSettle", "wtApology"] },
   { y: 2024, label: "2024", title: "A repository site", treaties: ["Treaty 3"], sites: ["revell"],
-    text: "NWMO selects a site between Wabigoon Lake Ojibway Nation and Ignace. The Nation says its yes &ldquo;does not signify approval of the project.&rdquo;",
+    text: "The Nuclear Waste Management Organization (NWMO) selects a site between Wabigoon Lake Ojibway Nation and Ignace. The Nation says its yes &ldquo;does not signify approval of the project.&rdquo;",
     refs: ["nwmoSite", "wlon"] },
   { y: 2026, label: "2026", title: "Today", sites: ["darlington", "chalk"],
-    text: "The Williams Treaties First Nations invest $700 million in the Darlington SMR project. Kebaowek First Nation asks the Supreme Court to hear its Chalk River case. As of November 23, 2026.",
+    text: "As of November 23, 2026: the Williams Treaties First Nations have announced a $700-million investment in the Darlington small modular reactor project, and Kebaowek First Nation has asked the Supreme Court to hear its Chalk River case.",
     refs: ["wtfnInvest", "scc2026"] },
 ];
 
 const OVERVIEW = {
   title: "Every step is on someone's land",
   body: [
-    "Canada's uranium is mined in northern Saskatchewan, refined at Blind River and converted at Port Hope. Fuel bundles are made in Port Hope and Peterborough, and they power reactors in Ontario and New Brunswick. Canada's used fuel is planned to go to a repository in northwestern Ontario. Two federal research sites, Chalk River and Whiteshell in Manitoba, are on the map too.",
-    "Each site below is on land covered by a treaty, or on land the regulator itself calls unceded. For each one, you'll find whose land it is, in the Nations' own words where we could find them, and what has happened there. That includes the parts that are still contested.",
+    "Canada's uranium is mined in northern Saskatchewan, refined at Blind River and converted at Port Hope. Fuel bundles are made in Port Hope and Peterborough for Canada's power reactors in Ontario and New Brunswick. Gentilly-2, in Quebec, is being decommissioned. Canada's used fuel is planned to go to a repository in northwestern Ontario. Two federal research sites, Chalk River and Whiteshell in Manitoba, are on the map too.",
+    "Each site below is on land covered by a treaty, or on land that Canada's nuclear regulator, the Canadian Nuclear Safety Commission (CNSC), itself calls unceded. For each one, you'll find whose land it is, in the Nations' own words where we could find them, and what has happened there. That includes the parts that are still contested.",
   ],
   refs: ["cnscMines", "brr22", "phcf", "bwxt", "nwmoSite"],
 };
@@ -723,11 +731,11 @@ const FILM_END = "Look up the treaty where you live and work. Every claim on the
 
 /* Headline figures. Each one is sourced on its site's page. */
 const NUMBERS = [
-  ["1725", "The year the oldest treaty on this map was first signed: the Peace and Friendship Treaties, which cover Point Lepreau."],
+  ["1725", "The year the first of the Peace and Friendship Treaties, the oldest on this map, was signed. They cover Point Lepreau."],
   [String(STOPS.length), "Sites from the uranium mines to the proposed repository, each on treaty or unceded land."],
-  ["$700M", "Williams Treaties First Nations' investment in the Darlington SMR project, announced in 2026."],
+  ["$700M", "The Williams Treaties First Nations' investment in the small modular reactor project at Darlington, announced in 2026."],
   ["$10B", "Canada and Ontario's settlement with the Robinson-Huron First Nations for unpaid treaty annuities."],
-  ["1,058–170", "Saugeen Ojibway Nation's 2020 vote against a waste repository at the Bruce site."],
+  ["1,058–170", "Saugeen Ojibway Nation's 2020 vote against a repository for low- and intermediate-level waste at the Bruce site."],
   ["$1.11B", "The 2018 Williams Treaties settlement with Canada and Ontario, with apologies from both."],
 ];
 const NUMBERS_NOTE = "Each figure is sourced on the page for its site.";
